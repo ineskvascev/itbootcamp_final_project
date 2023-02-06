@@ -29,7 +29,7 @@ public class ProfileTests extends BaseTest {
     }
 
     @Test   //Test #1:
-    public void editProfile () throws InterruptedException {
+    public void editProfile() {
         Faker faker = new Faker();
         String name = faker.name().fullName();
         String phone = faker.phoneNumber().cellPhone();
