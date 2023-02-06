@@ -1,9 +1,9 @@
-package Tests;
+package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AuthRoutesTests extends BaseTest {
+public class AuthRoutesTest extends BaseTest {
 
     @Test   //Test #1:
     public void forbidsVisitsToHomeUrlIfNotAuthenticated() {

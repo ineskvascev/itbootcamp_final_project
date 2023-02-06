@@ -1,6 +1,6 @@
-package Tests;
+package tests;
 
-import Pages.SignUpPage;
+import pages.SignUpPage;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;

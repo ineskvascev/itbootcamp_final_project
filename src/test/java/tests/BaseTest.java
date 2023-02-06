@@ -1,8 +1,8 @@
-package Tests;
+package tests;
 
-import Pages.HomePage;
-import Pages.LandingPage;
-import Pages.LoginPage;
+import pages.HomePage;
+import pages.LandingPage;
+import pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;

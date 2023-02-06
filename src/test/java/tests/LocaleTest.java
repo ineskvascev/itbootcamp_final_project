@@ -1,6 +1,6 @@
-package Tests;
+package tests;
 
-import Pages.LocalePage;
+import pages.LocalePage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

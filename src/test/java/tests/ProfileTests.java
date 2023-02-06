@@ -1,7 +1,6 @@
-package Tests;
+package tests;
 
-import Pages.HomePage;
-import Pages.ProfilePage;
+import pages.ProfilePage;
 import com.github.javafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
