@@ -66,43 +66,44 @@ public class ProfilePage extends BasePage {
 
 
     public void enterNameProfile(String name) {
-        inputName.click();
         inputName.sendKeys(Keys.SPACE);
         inputName.sendKeys(Keys.CONTROL + "a");
+        inputName.sendKeys(Keys.DELETE);
         inputName.sendKeys(name);
     }
 
     public void enterPhoneNumberProfile(String number) {
-        inputPhone.click();
         inputPhone.sendKeys(Keys.SPACE);
         inputPhone.sendKeys(Keys.CONTROL + "a");
+        inputPhone.sendKeys(Keys.DELETE);
         inputPhone.sendKeys(number);
+
     }
 
     public void enterCityProfile(String city) {
-        inputCity.click();
         inputCity.sendKeys(Keys.SPACE);
         inputCity.sendKeys(Keys.CONTROL + "a");
+        inputCity.sendKeys(Keys.DELETE);
         inputCity.sendKeys(city);
-        inputCity.sendKeys(Keys.ENTER, Keys.ARROW_DOWN, Keys.ENTER);
+        inputCity.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
     }
 
     public void enterCountryProfile (String country) {
-        inputCountry.click();
         inputCountry.sendKeys(Keys.SPACE);
         inputCountry.sendKeys(Keys.CONTROL + "a");
+        inputCountry.sendKeys(Keys.DELETE);
         inputCountry.sendKeys(country);
     }
 
     public void enterUrlTwitter (String twitterUrl) {
-        inputUrlTwitter.click();
-        inputUrlTwitter.clear();
+        inputUrlTwitter.sendKeys(Keys.CONTROL + "a");
+        inputUrlTwitter.sendKeys(Keys.DELETE);
         inputUrlTwitter.sendKeys(twitterUrl);
     }
 
     public void enterUrlGithub (String githubUrl) {
-        inputUrlGitHub.click();
-        inputUrlGitHub.clear();
+        inputUrlGitHub.sendKeys(Keys.CONTROL + "a");
+        inputUrlGitHub.sendKeys(Keys.DELETE);
         inputUrlGitHub.sendKeys(githubUrl);
     }
 

@@ -8,10 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class ProfileTests extends BaseTest {
-
     private ProfilePage profilePage;
-
-
 
     @BeforeClass
     @Override
@@ -31,7 +28,6 @@ public class ProfileTests extends BaseTest {
 
     @Test   //Test #1:
     public void editProfile () {
-
         Faker faker = new Faker();
         String name = faker.name().fullName();
         String phone = faker.phoneNumber().cellPhone();
@@ -39,7 +35,8 @@ public class ProfileTests extends BaseTest {
         String country = faker.country().name();
         String twitterUrl = faker.internet().url();
         String githubUrl = faker.internet().url();
-        profilePage.fillProfile(name, phone, city, country,twitterUrl,githubUrl);
+
+        profilePage.fillProfile(name, phone, city, country, twitterUrl, githubUrl);
 
         //Verifikovati da je prikazana poruka "Profile saved successfuly":
         Assert.assertTrue(profilePage.getMessageProfileSavedSuccessfully().contains("Profile saved successfuly"));

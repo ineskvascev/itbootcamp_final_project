@@ -42,9 +42,6 @@ public class AdminCitiesPage extends BasePage {
     @FindBy (xpath = "/html/body/div/div[1]/main/div/div[2]/div/div[1]/div[2]/table/tbody/tr/td[2]")
     private WebElement tableFieldName;
 
-    @FindBy (xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[1]/div[2]/table/body/tr")
-    private List<WebElement> tableCities;
-
     @FindBy (id = "delete")
     private WebElement buttonDeleteCity;
 
