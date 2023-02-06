@@ -26,10 +26,10 @@ public class ProfilePage extends BasePage {
     @FindBy(id = "urlGitHub")
     private WebElement inputUrlGitHub;
 
-    @FindBy(className = "btn")
+    @FindBy(className = "btnSave")
     private WebElement buttonSave;
 
-    @FindBy (className = "v-snack__content")
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]")
     private WebElement messageProfileSavedSuccessfully;
 
     public ProfilePage(WebDriver driver, WebDriverWait driverWait) {
@@ -60,20 +60,22 @@ public class ProfilePage extends BasePage {
         return inputUrlGitHub.getAttribute("value");
     }
 
-    public String getMessageProfileSavedSuccessfully () {
+    public String getMessageProfileSavedSuccessfully() {
         return messageProfileSavedSuccessfully.getText();
     }
 
 
     public void enterNameProfile(String name) {
-        inputName.sendKeys(Keys.SPACE);
+        //inputName.sendKeys(Keys.SPACE);
+        inputName.click();
         inputName.sendKeys(Keys.CONTROL + "a");
         inputName.sendKeys(Keys.DELETE);
         inputName.sendKeys(name);
     }
 
     public void enterPhoneNumberProfile(String number) {
-        inputPhone.sendKeys(Keys.SPACE);
+        //inputPhone.sendKeys(Keys.SPACE);
+        inputPhone.click();
         inputPhone.sendKeys(Keys.CONTROL + "a");
         inputPhone.sendKeys(Keys.DELETE);
         inputPhone.sendKeys(number);
@@ -88,26 +90,26 @@ public class ProfilePage extends BasePage {
         inputCity.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
     }
 
-    public void enterCountryProfile (String country) {
+    public void enterCountryProfile(String country) {
         inputCountry.sendKeys(Keys.SPACE);
         inputCountry.sendKeys(Keys.CONTROL + "a");
         inputCountry.sendKeys(Keys.DELETE);
         inputCountry.sendKeys(country);
     }
 
-    public void enterUrlTwitter (String twitterUrl) {
+    public void enterUrlTwitter(String twitterUrl) {
         inputUrlTwitter.sendKeys(Keys.CONTROL + "a");
         inputUrlTwitter.sendKeys(Keys.DELETE);
         inputUrlTwitter.sendKeys(twitterUrl);
     }
 
-    public void enterUrlGithub (String githubUrl) {
+    public void enterUrlGithub(String githubUrl) {
         inputUrlGitHub.sendKeys(Keys.CONTROL + "a");
         inputUrlGitHub.sendKeys(Keys.DELETE);
         inputUrlGitHub.sendKeys(githubUrl);
     }
 
-    public void fillProfile (String name, String phoneNumber, String country, String twitterUrl, String githubUrl) {
+    public void fillProfile(String name, String phoneNumber, String country, String twitterUrl, String githubUrl) {
         enterNameProfile(name);
         enterPhoneNumberProfile(phoneNumber);
         enterCountryProfile(country);
@@ -116,5 +118,5 @@ public class ProfilePage extends BasePage {
         buttonSave.click();
     }
 }
-  //String city
-  //enterCityProfile(city);
+//String city
+//enterCityProfile(city);
