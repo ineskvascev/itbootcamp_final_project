@@ -55,7 +55,7 @@ public class AdminCitiesTests extends BaseTest {
     }
 
 
-    @Test //Test #3:  PROVERITI
+    @Test //Test #3:
     public void editCity() {
         adminCitiesPage.addNewItem(city);
         adminCitiesPage.searchCity(city);
@@ -66,11 +66,10 @@ public class AdminCitiesTests extends BaseTest {
     }
 
 
-    @Test  //Test #4:   PROVERITI
+    @Test  //Test #4:
     public void searchCity() {
         adminCitiesPage.addNewItem(city);
         adminCitiesPage.searchCity(city);
-
 
         //Verifikovati da se u Name koloni prvog reda nalazi tekst iz pretrage:
         Assert.assertTrue(adminCitiesPage.getSearchedCityText().contains(city));
@@ -86,17 +85,11 @@ public class AdminCitiesTests extends BaseTest {
         // U polje za pretragu uneti staro ime grada:
         adminCitiesPage.searchCity(city);
 
-        // Sacekati da broj redova u tabeli bude 1:
-        // driverWait.until(ExpectedConditions.numberOfElementsToBe(By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div[1]/div[2]/table/tbody/tr/td[2]"), 1));
-
         //Verifikovati da se u Name koloni prvog reda nalazi tekst iz pretrage:
         Assert.assertTrue(adminCitiesPage.getTableFieldName().contains(city));
 
         //Kliknuti na dugme Delete iz prvog reda:
         adminCitiesPage.deleteCity();
-
-        //Sacekati da se dijalog za brisanje pojavi
-        //  driverWait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id=\"app\"]/div[14]/div/div/div[1]"), "Do you really want to delete this item?"));
 
         //Kliknuti na dugme Delete iz dijaloga
         adminCitiesPage.confirmDeletingCity();

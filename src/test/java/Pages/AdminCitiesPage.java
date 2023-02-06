@@ -129,15 +129,4 @@ public class AdminCitiesPage extends BasePage {
         buttonInWarningMessageDeleteCity.click();
     }
 
-
-
-
-
-
-
-
-
-
-
-
 }
