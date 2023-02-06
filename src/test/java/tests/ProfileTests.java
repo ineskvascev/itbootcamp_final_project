@@ -42,11 +42,9 @@ public class ProfileTests extends BaseTest {
 
         // city,
 
-        Thread.sleep(10000);
+        Thread.sleep(2000);
         //Verifikovati da je prikazana poruka "Profile saved successfuly":
-        String messageProfileSavedSuccessfully = profilePage.getMessageProfileSavedSuccessfully();
-        System.out.println(messageProfileSavedSuccessfully);
-       // Assert.assertTrue(messageProfileSavedSuccessfully.contains("Profile saved successfuly"));
+        Assert.assertTrue(profilePage.getMessageProfileSavedSuccessfully().contains("Profile saved successfuly"));
 
         //Verifikovati da svaki input sada za atribut 'value' ima vrednost koja je uneta u okviru forme:
         Assert.assertEquals(profilePage.getInputNameProfile(), name);
