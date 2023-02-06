@@ -14,7 +14,7 @@ public class ProfilePage extends BasePage {
     @FindBy(id = "phone")
     private WebElement inputPhone;
 
-    @FindBy(className = "v-select__slot")
+    @FindBy(id = "city")
     private WebElement inputCity;
 
     @FindBy(id = "country")
@@ -83,9 +83,8 @@ public class ProfilePage extends BasePage {
     }
 
     public void enterCityProfile(String city) {
-        inputCity.sendKeys(Keys.SPACE);
+        inputCity.click();
         inputCity.sendKeys(Keys.CONTROL + "a");
-        inputCity.sendKeys(Keys.DELETE);
         inputCity.sendKeys(city);
         inputCity.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
     }
@@ -109,14 +108,13 @@ public class ProfilePage extends BasePage {
         inputUrlGitHub.sendKeys(githubUrl);
     }
 
-    public void fillProfile(String name, String phoneNumber, String country, String twitterUrl, String githubUrl) {
+    public void fillProfile(String name, String phoneNumber, String city, String country, String twitterUrl, String githubUrl) {
         enterNameProfile(name);
         enterPhoneNumberProfile(phoneNumber);
+        enterCityProfile(city);
         enterCountryProfile(country);
         enterUrlTwitter(twitterUrl);
         enterUrlGithub(githubUrl);
         buttonSave.click();
     }
 }
-//String city
-//enterCityProfile(city);
