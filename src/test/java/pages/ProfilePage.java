@@ -64,7 +64,6 @@ public class ProfilePage extends BasePage {
         return messageProfileSavedSuccessfully.getText();
     }
 
-
     public void enterNameProfile(String name) {
         //inputName.sendKeys(Keys.SPACE);
         inputName.click();
@@ -79,7 +78,6 @@ public class ProfilePage extends BasePage {
         inputPhone.sendKeys(Keys.CONTROL + "a");
         inputPhone.sendKeys(Keys.DELETE);
         inputPhone.sendKeys(number);
-
     }
 
     public void enterCityProfile(String city) {

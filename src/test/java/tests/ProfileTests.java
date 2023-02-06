@@ -33,18 +33,15 @@ public class ProfileTests extends BaseTest {
         Faker faker = new Faker();
         String name = faker.name().fullName();
         String phone = faker.phoneNumber().cellPhone();
-        //String city = faker.address().city();
-        String city = "New York";
+        String city = "New York";         // stavljen fiksni grad, jer ne moze da pronadje grad kad se pokrene test ako se koristi faker
         String country = faker.country().name();
         String twitterUrl = "https://" +  faker.internet().url().toLowerCase();
         String githubUrl = "https://" + faker.internet().url().toLowerCase();
-
         profilePage.fillProfile(name, phone, city, country, twitterUrl, githubUrl);
 
-        // ne znam koji wait umesto thread sleep
-        Thread.sleep(2000);
+        driverWait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]"), "Profile saved successfuly"));
+
         //Verifikovati da je prikazana poruka "Profile saved successfuly":
-        //driverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("\"//*[@id=\\\"app\\\"]/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]")));
         Assert.assertTrue(profilePage.getMessageProfileSavedSuccessfully().contains("Profile saved successfuly"));
 
         //Verifikovati da svaki input sada za atribut 'value' ima vrednost koja je uneta u okviru forme:
