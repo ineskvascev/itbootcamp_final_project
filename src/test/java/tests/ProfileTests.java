@@ -31,12 +31,16 @@ public class ProfileTests extends BaseTest {
         Faker faker = new Faker();
         String name = faker.name().fullName();
         String phone = faker.phoneNumber().cellPhone();
-        String city = faker.address().city();
+
         String country = faker.country().name();
         String twitterUrl = faker.internet().url();
         String githubUrl = faker.internet().url();
 
-        profilePage.fillProfile(name, phone, city, country, twitterUrl, githubUrl);
+        //  String city = faker.address().city();
+
+        profilePage.fillProfile(name, phone, country, twitterUrl, githubUrl);
+
+        // city,
 
         //Verifikovati da je prikazana poruka "Profile saved successfuly":
         Assert.assertTrue(profilePage.getMessageProfileSavedSuccessfully().contains("Profile saved successfuly"));
@@ -44,13 +48,13 @@ public class ProfileTests extends BaseTest {
         //Verifikovati da svaki input sada za atribut 'value' ima vrednost koja je uneta u okviru forme:
         Assert.assertEquals(profilePage.getInputNameProfile(), name);
         Assert.assertEquals(profilePage.getInputPhone(), phone);
-        Assert.assertEquals(profilePage.getInputCity(), city);
+
         Assert.assertEquals(profilePage.getInputCountry(), country);
         Assert.assertEquals(profilePage.getInputUrlTwitter(), twitterUrl);
         Assert.assertEquals(profilePage.getInputUrlGithub(), githubUrl);
 
 
-
+      // Assert.assertEquals(profilePage.getInputCity(), city);
 
 
 

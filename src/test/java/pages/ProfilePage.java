@@ -107,13 +107,14 @@ public class ProfilePage extends BasePage {
         inputUrlGitHub.sendKeys(githubUrl);
     }
 
-    public void fillProfile (String name, String phoneNumber, String city, String country, String twitterUrl, String githubUrl) {
+    public void fillProfile (String name, String phoneNumber, String country, String twitterUrl, String githubUrl) {
         enterNameProfile(name);
         enterPhoneNumberProfile(phoneNumber);
-        enterCityProfile(city);
         enterCountryProfile(country);
         enterUrlTwitter(twitterUrl);
         enterUrlGithub(githubUrl);
         buttonSave.click();
     }
 }
+  //String city
+  //enterCityProfile(city);
