@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
 
 public class LoginTests extends BaseTest {
 
-
     @BeforeMethod
     @Override
     public void beforeMethod() {
@@ -29,11 +28,11 @@ public class LoginTests extends BaseTest {
     @Test //Test #2
     public void checksInputTypes() {
 
-        // Verifikovati da polje za unos emaila za atribut type ima vrednost email:
+        // Verifikovati da polje za unos emaila za atribut "type" ima vrednost email:
         String emailValue = "email";
         Assert.assertEquals(loginPage.getEmail(), emailValue);
 
-        // Verifikovati da polje za unos lozinke za atribut type ima vrednost password:
+        // Verifikovati da polje za unos lozinke za atribut "type" ima vrednost password:
         String passwordValue = "password";
         Assert.assertEquals(loginPage.getPassword(), passwordValue);
     }
@@ -57,9 +56,8 @@ public class LoginTests extends BaseTest {
     @Test //Test #4:
     public void displaysErrorsWhenPasswordIsWrong() {
 
-        String validEmail = "admin@admin.com";
         String invalidPassword = "54321";
-        loginPage.performLogin(validEmail, invalidPassword);
+        loginPage.performLogin(EMAIL, invalidPassword);
 
         //Verifikovati da greska sadrzi poruku "Wrong password":
         driverWait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]/ul/li"), "Wrong password"));
@@ -73,9 +71,7 @@ public class LoginTests extends BaseTest {
     @Test //Test #5:
     public void login() {
 
-        String validEmail = "admin@admin.com";
-        String validPassword = "12345";
-        loginPage.performLogin(validEmail, validPassword);
+        loginPage.performLogin(EMAIL, PASSWORD);
 
         //Verifikovati da se u url-u stranice javlja /home ruta:
         String actualLink = driver.getCurrentUrl();
@@ -87,9 +83,7 @@ public class LoginTests extends BaseTest {
     public void logout() {
 
         //Verifikovati da je dugme logout vidljivo na stranici:
-        String validEmail = "admin@admin.com";
-        String validPassword = "12345";
-        loginPage.performLogin(validEmail, validPassword);
+        loginPage.performLogin(EMAIL, PASSWORD);
         Assert.assertTrue(homePage.isButtonLogoutDisplayed());
 
         //Verifikovati da se u url-u stranice javlja /login ruta:
@@ -104,5 +98,4 @@ public class LoginTests extends BaseTest {
         String actualLink1 = driver.getCurrentUrl();
         Assert.assertTrue(actualLink1.contains("/login"));
     }
-
 }

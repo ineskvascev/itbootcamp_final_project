@@ -9,7 +9,6 @@ public class HomePage extends BasePage {
 
     @FindBy (xpath = "//*[@id=\"app\"]/div[1]/div/header/div/div[3]/button[2]")
     private WebElement buttonLogout;
-
     @FindBy (xpath = "//*[@id=\"app\"]/div[1]/div/header/div/div[3]/a[3]")
     private WebElement openMyProfile;
 
@@ -19,11 +18,9 @@ public class HomePage extends BasePage {
     }
 
 
-
     public boolean isButtonLogoutDisplayed () {
         return buttonLogout.isDisplayed();
     }
-
 
     public void logout () {
         buttonLogout.click();
@@ -31,8 +28,5 @@ public class HomePage extends BasePage {
 
     public void openMyProfile() {
         openMyProfile.click();
-
     }
-
-
 }

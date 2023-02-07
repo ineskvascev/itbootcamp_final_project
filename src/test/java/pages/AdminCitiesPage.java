@@ -9,9 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 public class AdminCitiesPage extends BasePage {
-
     @FindBy (className = "btnAdmin")
     private WebElement buttonAdmin;
+
     @FindBy (className = "btnAdminCities")
     private WebElement buttonCities;
 
@@ -56,7 +56,6 @@ public class AdminCitiesPage extends BasePage {
 
     @FindBy(xpath = "/html/body/div/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]/button/span")
     private WebElement buttonClose;
-
 
 
     public AdminCitiesPage(WebDriver driver, WebDriverWait driverWait) {

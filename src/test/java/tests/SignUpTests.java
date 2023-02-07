@@ -8,11 +8,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 public class SignUpTests extends BaseTest {
-
     private SignUpPage signUpPage;
-
 
     @Override
     @BeforeClass
@@ -31,7 +28,7 @@ public class SignUpTests extends BaseTest {
     @Test //Test #1:
     public void visitSignUPage() {
 
-        //Verifikovati da se u url-u stranice javlja /signup ruta
+        //Verifikovati da se u url-u stranice javlja /signup ruta:
         String actualLink = driver.getCurrentUrl();
         Assert.assertTrue(actualLink.contains("/signup"));
     }
@@ -39,17 +36,17 @@ public class SignUpTests extends BaseTest {
     @Test //Test #2:
     public void checkInputTypes() {
 
-        // Verifikovati da polje za unos emaila za atribut type ima vrednost email
+        // Verifikovati da polje za unos emaila za atribut "type" ima vrednost email:
         String inputEmail = "email";
         Assert.assertEquals(signUpPage.getFieldEmailSignUp(), inputEmail);
 
-        // Verifikovati da polje za unos lozinke za atribut type ima vrednost password
+        // Verifikovati da polje za unos lozinke za atribut "type" ima vrednost password:
         String inputPassword = "password";
         Assert.assertEquals(signUpPage.getFieldPasswordSignUp(), inputPassword);
 
-        // Verifikovati da polje za unos lozinke za potvrdu za atribut type ima vrednost password
-        String inputConfirmePassword = "password";
-        Assert.assertEquals(signUpPage.getFieldConfirmPasswordSignUp(), inputConfirmePassword);
+        // Verifikovati da polje za unos lozinke za potvrdu za atribut "type" ima vrednost password:
+        String inputConfirmPassword = "password";
+        Assert.assertEquals(signUpPage.getFieldConfirmPasswordSignUp(), inputConfirmPassword);
     }
 
     @Test //Test #3:

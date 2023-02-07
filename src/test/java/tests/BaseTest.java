@@ -43,16 +43,13 @@ public abstract class BaseTest {
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
     }
 
-
     @AfterMethod
     public void afterMethod () {
-    }
 
+    }
 
     @AfterClass
     public void afterClass () {
         driver.quit();
     }
-
-
 }

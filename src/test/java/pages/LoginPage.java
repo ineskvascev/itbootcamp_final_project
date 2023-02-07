@@ -6,29 +6,20 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends BasePage {
-
     @FindBy (xpath = "//*[@id=\"app\"]/div/main/div")
     private WebElement loginForm;
-
     @FindBy (id = "email")
     private WebElement emailField;
-
     @FindBy (id = "password")
     private WebElement passwordField;
-
     @FindBy (xpath = "//*[@id=\"app\"]/div/main/div/div[2]/div/div/div[3]/span/form/div/div[3]/button")
     private WebElement buttonLogin;
-
     @FindBy (xpath = "//*[@id=\"app\"]/div/main/div/div[2]/div/div/div[3]/span/form/div/div[4]/a")
     private WebElement forgotPasswordLink;
-
     @FindBy (xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]")
     private WebElement errorLoginMessage;
-
     @FindBy (xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]/ul/li")
     private WebElement wrongPasswordMessage;
-
-
 
 
     public LoginPage(WebDriver driver, WebDriverWait driverWait) {
@@ -53,7 +44,6 @@ public class LoginPage extends BasePage {
         return passwordField.getAttribute("type");
     }
 
-
     public String getWrongPasswordMessage () {
         return wrongPasswordMessage.getText();
     }
@@ -67,13 +57,11 @@ public class LoginPage extends BasePage {
         this.passwordField.sendKeys(password);
     }
 
-
     public void performLogin (String email, String password) {
         inputEmail(email);
         inputPassword(password);
         buttonLogin.click();
     }
-
 
     public void goToSignUpFromLoginPage () {
         forgotPasswordLink.click();

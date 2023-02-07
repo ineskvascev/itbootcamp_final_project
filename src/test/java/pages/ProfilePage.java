@@ -65,7 +65,6 @@ public class ProfilePage extends BasePage {
     }
 
     public void enterNameProfile(String name) {
-        //inputName.sendKeys(Keys.SPACE);
         inputName.click();
         inputName.sendKeys(Keys.CONTROL + "a");
         inputName.sendKeys(Keys.DELETE);
@@ -73,7 +72,6 @@ public class ProfilePage extends BasePage {
     }
 
     public void enterPhoneNumberProfile(String number) {
-        //inputPhone.sendKeys(Keys.SPACE);
         inputPhone.click();
         inputPhone.sendKeys(Keys.CONTROL + "a");
         inputPhone.sendKeys(Keys.DELETE);

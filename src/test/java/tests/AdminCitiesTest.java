@@ -11,9 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class AdminCitiesTest extends BaseTest {
-
     private AdminCitiesPage adminCitiesPage;
-
     Faker faker = new Faker();
     String city = faker.address().city();
 
@@ -54,9 +52,9 @@ public class AdminCitiesTest extends BaseTest {
         Assert.assertTrue(adminCitiesPage.getMessageSavedSuccessfully().contains("Saved successfully"));
     }
 
-
     @Test //Test #3:
     public void editCity() {
+
         adminCitiesPage.addNewItem(city);
         adminCitiesPage.searchCity(city);
         adminCitiesPage.editCity(city);
@@ -65,16 +63,15 @@ public class AdminCitiesTest extends BaseTest {
         Assert.assertTrue(adminCitiesPage.getMessageSavedSuccessfully().contains("Saved successfully"));
     }
 
-
     @Test  //Test #4:
     public void searchCity() {
+
         adminCitiesPage.addNewItem(city);
         adminCitiesPage.searchCity(city);
 
         //Verifikovati da se u Name koloni prvog reda nalazi tekst iz pretrage:
         Assert.assertTrue(adminCitiesPage.getSearchedCityText().contains(city));
     }
-
 
     @Test //Test #5:
     public void deleteCity() {

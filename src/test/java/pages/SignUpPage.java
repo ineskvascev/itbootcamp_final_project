@@ -29,8 +29,6 @@ public class SignUpPage extends BasePage {
     private WebElement verifyYourAccountMessage;   // className = v-snack__content  ????
 
 
-
-
     public SignUpPage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
     }
@@ -52,10 +50,10 @@ public class SignUpPage extends BasePage {
         return emailAlreadyExistMessage.getText();
     }
 
-
     public String getVerifyYourAccountMessage() {
         return verifyYourAccountMessage.getText();
     }
+
 
     public void inputSignUpName (String name) {
         this.fieldSignUpName.clear();
@@ -84,5 +82,4 @@ public class SignUpPage extends BasePage {
         confirmPasswordSignUp(passwordAgain);
         buttonSignMeUp.click();
     }
-
 }
