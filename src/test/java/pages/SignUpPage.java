@@ -10,23 +10,26 @@ public class SignUpPage extends BasePage {
     @FindBy(id = "name")
     private WebElement fieldSignUpName;
 
-    @FindBy (id = "email")
+    @FindBy(id = "email")
     private WebElement fieldEmailSignUp;
 
-    @FindBy (id = "password")
+    @FindBy(id = "password")
     private WebElement fieldPasswordSignUp;
 
-    @FindBy (id = "confirmPassword")
+    @FindBy(id = "confirmPassword")
     private WebElement fieldConfirmPasswordSignUp;
 
-    @FindBy (xpath = "//*[@id=\"app\"]/div/main/div/div[2]/div/div/div[2]/span/form/div/div[5]/button")
+    @FindBy(xpath = "//*[@id=\"app\"]/div/main/div/div[2]/div/div/div[2]/span/form/div/div[5]/button")
     private WebElement buttonSignMeUp;
 
-    @FindBy (xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[3]/div/div/div/div/div[1]/ul/li")
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[3]/div/div/div/div/div[1]/ul/li")
     private WebElement emailAlreadyExistMessage;
 
-    @FindBy ( xpath = "//*[@id=\"app\"]/div[4]/div/div/div[1]")
-    private WebElement verifyYourAccountMessage;   // className = v-snack__content  ????
+    @FindBy(xpath = "//*[@id=\"app\"]/div[4]/div/div/div[1]")
+    private WebElement verifyYourAccountMessage;
+
+    @FindBy(className = "btnClose")
+    private WebElement buttonClose;
 
 
     public SignUpPage(WebDriver driver, WebDriverWait driverWait) {
@@ -34,19 +37,19 @@ public class SignUpPage extends BasePage {
     }
 
 
-    public String getFieldEmailSignUp () {
+    public String getFieldEmailSignUp() {
         return fieldEmailSignUp.getAttribute("type");
     }
 
-    public String getFieldPasswordSignUp () {
+    public String getFieldPasswordSignUp() {
         return fieldPasswordSignUp.getAttribute("type");
     }
 
-    public String getFieldConfirmPasswordSignUp () {
+    public String getFieldConfirmPasswordSignUp() {
         return fieldConfirmPasswordSignUp.getAttribute("type");
     }
 
-    public String getEmailMessage () {
+    public String getEmailMessage() {
         return emailAlreadyExistMessage.getText();
     }
 
@@ -55,31 +58,35 @@ public class SignUpPage extends BasePage {
     }
 
 
-    public void inputSignUpName (String name) {
+    public void inputSignUpName(String name) {
         this.fieldSignUpName.clear();
         this.fieldSignUpName.sendKeys(name);
     }
 
-    public void inputSignUpEmail (String email) {
+    public void inputSignUpEmail(String email) {
         this.fieldEmailSignUp.clear();
         this.fieldEmailSignUp.sendKeys(email);
     }
 
-    public void inputSignUpPassword (String password) {
+    public void inputSignUpPassword(String password) {
         this.fieldPasswordSignUp.clear();
         this.fieldPasswordSignUp.sendKeys(password);
     }
 
-    public void confirmPasswordSignUp (String password) {
+    public void confirmPasswordSignUp(String password) {
         this.fieldConfirmPasswordSignUp.clear();
         this.fieldConfirmPasswordSignUp.sendKeys(password);
     }
 
-    public void performSignUp (String name, String email, String password, String passwordAgain) {
+    public void performSignUp(String name, String email, String password, String passwordAgain) {
         inputSignUpName(name);
         inputSignUpEmail(email);
         inputSignUpPassword(password);
         confirmPasswordSignUp(passwordAgain);
         buttonSignMeUp.click();
+    }
+
+    public void closeMessage() {
+        buttonClose.click();
     }
 }

@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -40,7 +41,6 @@ public class LoginTests extends BaseTest {
     @Test //Test #3
     public void displaysErrorsWhenUserDoesNotExist() {
 
-        Faker faker = new Faker();
         String fakeEmail = faker.internet().emailAddress();
         String fakePassword = faker.internet().password();
         loginPage.performLogin(fakeEmail, fakePassword);
@@ -69,9 +69,11 @@ public class LoginTests extends BaseTest {
     }
 
     @Test //Test #5:
-    public void login() {
+    public void login() throws InterruptedException {
 
-        loginPage.performLogin(EMAIL, PASSWORD);
+        loginPage.performLogin(EMAIL,PASSWORD);
+
+        Thread.sleep(1000);
 
         //Verifikovati da se u url-u stranice javlja /home ruta:
         String actualLink = driver.getCurrentUrl();

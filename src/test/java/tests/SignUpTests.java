@@ -1,5 +1,6 @@
 package tests;
 
+import org.testng.annotations.AfterMethod;
 import pages.SignUpPage;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
@@ -70,15 +71,16 @@ public class SignUpTests extends BaseTest {
     @Test //Test #4:
     public void signUp() {
 
-        Faker faker = new Faker();
         String name = faker.name().fullName();
-        String emailTemplate = faker.internet().emailAddress();
+        String email = faker.internet().emailAddress();
         String password = faker.internet().password();
         String confirmPassword = password;
-        signUpPage.performSignUp(name, emailTemplate, password, confirmPassword);
+        signUpPage.performSignUp(name, email, password, confirmPassword);
 
         // Verifikovati da dijalog za obavestenje sadrzi tekst "IMPORTANT: Verify your account" :
         driverWait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id=\"app\"]/div[4]/div/div/div[1]"), "IMPORTANT: Verify your account"));
         Assert.assertEquals(signUpPage.getVerifyYourAccountMessage(), "IMPORTANT: Verify your account");
+        signUpPage.closeMessage();
+
     }
 }

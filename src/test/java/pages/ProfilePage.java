@@ -78,11 +78,11 @@ public class ProfilePage extends BasePage {
         inputPhone.sendKeys(number);
     }
 
-    public void enterCityProfile(String city) {
+    public void enterCityProfile(String cityName) {
         inputCity.click();
         inputCity.sendKeys(Keys.CONTROL + "a");
-        inputCity.sendKeys(city);
-        inputCity.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
+        inputCity.sendKeys(cityName);
+        inputCity.sendKeys(Keys.ENTER);
     }
 
     public void enterCountryProfile(String country) {

@@ -1,5 +1,8 @@
 package tests;
 
+import com.github.javafaker.Faker;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pages.HomePage;
 import pages.LandingPage;
 import pages.LoginPage;
@@ -19,9 +22,11 @@ public abstract class BaseTest {
     protected LandingPage landingPage;
     protected LoginPage loginPage;
     protected HomePage homePage;
+    protected Faker faker;
+    protected String baseUrl= "https://vue-demo.daniel-avellaneda.com/";
 
-    final String EMAIL = "admin@admin.com";
-    final String PASSWORD = "12345";
+    protected final String EMAIL = "admin@admin.com";
+    protected final String PASSWORD = "12345";
 
 
     @BeforeClass
@@ -33,23 +38,30 @@ public abstract class BaseTest {
         landingPage = new LandingPage(driver, driverWait);
         loginPage = new LoginPage(driver, driverWait);
         homePage = new HomePage(driver, driverWait);
+        faker = new Faker(); //???????????????????????????
     }
 
-
     @BeforeMethod
-    public void beforeMethod () {
-        driver.get("https://vue-demo.daniel-avellaneda.com/");
+    public void beforeMethod() {
+        driver.get(baseUrl);
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
     }
 
     @AfterMethod
-    public void afterMethod () {
+    public void afterMethod() {
 
+        if (!driver.getCurrentUrl().equals(baseUrl) && !driver.getCurrentUrl().endsWith("/login") && !driver.getCurrentUrl().endsWith("/signup")) {
+            WebElement buttonLogout = driver.findElement(By.cssSelector("#app > div.v-application--wrap > div > header > div > div.v-toolbar__items > button.hidden-sm-and-down.btnLogout.v-btn.v-btn--text.theme--light.v-size--default"));
+            if (buttonLogout.isDisplayed() && buttonLogout.getText().equalsIgnoreCase("logout")) {
+                buttonLogout.click();
+            }
+        }
     }
 
     @AfterClass
-    public void afterClass () {
+    public void afterClass() {
         driver.quit();
     }
 }
+

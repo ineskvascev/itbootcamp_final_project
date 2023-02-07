@@ -54,7 +54,7 @@ public class AdminCitiesPage extends BasePage {
     @FindBy (xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]")
     private WebElement messageDeletedSuccessfully;
 
-    @FindBy(xpath = "/html/body/div/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]/button/span")
+    @FindBy(xpath = "/html/body/div/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]/button")
     private WebElement buttonClose;
 
 
@@ -77,7 +77,7 @@ public class AdminCitiesPage extends BasePage {
     }
 
     public String getSearchedCityText () {
-        return inputSearch.getText();
+        return inputSearch.getAttribute("value");
     }
 
 
@@ -93,9 +93,13 @@ public class AdminCitiesPage extends BasePage {
     public void addNewItem (String city) {
         buttonNewItem.click();
         inputNewItemName.clear();
-
         inputNewItemName.sendKeys(city);
         buttonSave.click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void closeMessage() {
@@ -103,6 +107,11 @@ public class AdminCitiesPage extends BasePage {
     }
 
     public void searchCity (String city) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         inputSearch.click();
         inputSearch.sendKeys(Keys.CONTROL + "a");
         inputSearch.sendKeys(Keys.ENTER);
@@ -112,7 +121,9 @@ public class AdminCitiesPage extends BasePage {
     public void editCity (String city) {
         searchCity(city);
         buttonEdit.click();
-        inputEditName.sendKeys(" - edited");
+        inputEditName.sendKeys(Keys.CONTROL + "a");
+        inputEditName.sendKeys(Keys.DELETE);
+        inputEditName.sendKeys(city + " - edited");
         buttonSave.click();
     }
 

@@ -7,8 +7,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage extends BasePage {
 
-    @FindBy (xpath = "//*[@id=\"app\"]/div[1]/div/header/div/div[3]/button[2]")
-    private WebElement buttonLogout;
+    @FindBy (css = "#app > div.v-application--wrap > div > header > div > div.v-toolbar__items > button.hidden-sm-and-down.btnLogout.v-btn.v-btn--text.theme--light.v-size--default")
+    private WebElement buttonLogout;   //  //*[@id="app"]/div[1]/div/header/div/div[3]/button[2]
     @FindBy (xpath = "//*[@id=\"app\"]/div[1]/div/header/div/div[3]/a[3]")
     private WebElement openMyProfile;
 
