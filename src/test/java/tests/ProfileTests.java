@@ -39,10 +39,10 @@ public class ProfileTests extends BaseTest {
 
         driverWait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]"), "Profile saved successfuly"));
 
-        //Verifikovati da je prikazana poruka "Profile saved successfully":
+        // Verify that the message "Profile saved successfully" is displayed:
         Assert.assertTrue(profilePage.getMessageProfileSavedSuccessfully().contains("Profile saved successfuly"));
 
-        //Verifikovati da svaki input sada za atribut 'value' ima vrednost koja je uneta u okviru forme:
+        // Verify that each input now for the 'value' attribute has the value entered within the form:
         Assert.assertEquals(profilePage.getInputNameProfile(), name);
         Assert.assertEquals(profilePage.getInputPhone(), phone);
         Assert.assertEquals(profilePage.getInputCity(), cityName);

@@ -33,11 +33,11 @@ public class AdminCitiesTest extends BaseTest {
     @Test //Test #1:
     public void visitsAdminCitiesPageAndListCities() {
 
-        //Verifikovati da se u url-u stranice javlja /admin/cities ruta:
+        //Verify that the /admin/cities route appears in the url of the page:
         String actualLink = driver.getCurrentUrl();
         Assert.assertTrue(actualLink.contains("/admin/cities"));
 
-        //Verifikovati postojanje logout dugmeta:
+        //Verify the existence of the 'logout' button:
         Assert.assertTrue(adminCitiesPage.isButtonLogoutDisplayed());
     }
 
@@ -46,7 +46,7 @@ public class AdminCitiesTest extends BaseTest {
 
         adminCitiesPage.addNewItem(city);
 
-        //Verifikovati da poruka sadrzi tekst "Saved successfully":
+        //Verify that the message contains the text "Saved successfully":
         Assert.assertTrue(adminCitiesPage.getMessageSavedSuccessfully().contains("Saved successfully"));
     }
 
@@ -56,7 +56,7 @@ public class AdminCitiesTest extends BaseTest {
         adminCitiesPage.addNewItem(city);
         adminCitiesPage.editCity(city);
 
-        //Verifikovati da poruka sadrzi tekst "Saved successfully"
+        //Verify that the message contains the text "Saved successfully""
         Assert.assertTrue(adminCitiesPage.getMessageSavedSuccessfully().contains("Saved successfully"));
     }
 
@@ -66,7 +66,7 @@ public class AdminCitiesTest extends BaseTest {
         adminCitiesPage.addNewItem(city);
         adminCitiesPage.searchCity(city);
 
-        //Verifikovati da se u Name koloni prvog reda nalazi tekst iz pretrage:
+        //Verify that the text from the search is in the 'Name' column of the first row:
         Assert.assertTrue(adminCitiesPage.getSearchedCityText().contains(city));
     }
 
@@ -74,11 +74,9 @@ public class AdminCitiesTest extends BaseTest {
     public void deleteCity() {
 
         adminCitiesPage.addNewItem(city);
-
-        // U polje za pretragu uneti staro ime grada:
         adminCitiesPage.editCity(city);
 
-        //Verifikovati da se u Name koloni prvog reda nalazi tekst iz pretrage:
+        //Verify that the text from the search is in the 'Name' column of the first row:
         Assert.assertTrue(adminCitiesPage.getTableFieldName().contains(city));
 
         try {
@@ -88,16 +86,16 @@ public class AdminCitiesTest extends BaseTest {
         }
         adminCitiesPage.closeMessage();
 
-        //Kliknuti na dugme Delete iz prvog reda:
+        //Click on the 'Delete' button from the first row:
         adminCitiesPage.deleteCity();
 
-        //Kliknuti na dugme Delete iz dijaloga
+        //Click on the 'Delete' button from the dialog:
         adminCitiesPage.confirmDeletingCity();
 
-        //Sacekati da pop za prikaz poruke bude vidljiv
+        //Wait for the message display popup to be visible:
         driverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]")));
 
-        //Verifikovati da poruka sadrzi tekst "Deleted successfully":
+        //Verify that the message contains the text "Deleted successfully":
         Assert.assertTrue(adminCitiesPage.getMessageDeletedSuccessfully().contains("Deleted successfully"));
         adminCitiesPage.closeMessage();
     }

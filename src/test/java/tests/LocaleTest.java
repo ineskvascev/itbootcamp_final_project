@@ -6,28 +6,28 @@ public class LocaleTest extends BaseTest {
 
     @Test
     public void setLocaleToES() {
-        //Postaviti jezik na ES:
+        // Set language to ES:
         landingPage.chooseSpanishLanguage();
 
-        //Verifikovati da se na stranici u hederu javlja tekst "Página de aterrizaje":
+        // Verify that the text "Página de aterrizaje" appears in the header of the page:
         Assert.assertEquals(landingPage.getHeaderMessage(), "Página de aterrizaje");
     }
 
     @Test  //Test #2:
     public void setLocaleToEN() {
-        //Postaviti jezik na EN:
+        // Set the language to EN:
         landingPage.chooseEnglishLanguage();
 
-        //Verifikovati da se na stranici u hederu javlja tekst "Landing":
+        // Verify that the text "Landing" appears in the header of the page:
         Assert.assertEquals(landingPage.getHeaderMessage(), "Landing");
     }
 
     @Test  //Test #3:
     public void setLocaleToFR() {
-        //Postaviti jezik na FR:
+        // Set language to FR:
         landingPage.chooseFrenchLanguage();
 
-        //Verifikovati da se na stranici u hederu javlja tekst "Page d'atterrissage":
+        // Verify that the text "Page d'atterrissage" appears in the header of the page:
         Assert.assertEquals(landingPage.getHeaderMessage(), "Page d'atterrissage");
     }
 }

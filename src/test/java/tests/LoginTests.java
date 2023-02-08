@@ -1,10 +1,8 @@
 package tests;
 
-import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -21,7 +19,7 @@ public class LoginTests extends BaseTest {
     @Test   //Test #1:
     public void visitLoginPage() {
 
-        //Verifikovati da se u url-u stranice javlja ruta /login
+        // Verify that the route /login appears in the url of the page:
         String actualLink = driver.getCurrentUrl();
         Assert.assertTrue(actualLink.contains("/login"));
     }
@@ -29,11 +27,11 @@ public class LoginTests extends BaseTest {
     @Test //Test #2
     public void checksInputTypes() {
 
-        // Verifikovati da polje za unos emaila za atribut "type" ima vrednost email:
+        // Verify that the email input field for the "type" attribute has the value 'email':
         String emailValue = "email";
         Assert.assertEquals(loginPage.getEmail(), emailValue);
 
-        // Verifikovati da polje za unos lozinke za atribut "type" ima vrednost password:
+        // Verify that the password entry field for the "type" attribute has the value 'password':
         String passwordValue = "password";
         Assert.assertEquals(loginPage.getPassword(), passwordValue);
     }
@@ -45,10 +43,10 @@ public class LoginTests extends BaseTest {
         String fakePassword = faker.internet().password();
         loginPage.performLogin(fakeEmail, fakePassword);
 
-        //Verifikovati da greska sadrzi poruku "User does not exists":
+        // Verify that the error contains the message "User does not exist":
         Assert.assertTrue(loginPage.getInvalidLogin().contains("User does not exist"));
 
-        //Verifikovati da se u url-u stranice javlja /login ruta:
+        // Verify that the /login route appears in the url of the page:
         String actualLink = driver.getCurrentUrl();
         Assert.assertTrue(actualLink.contains("/login"));
     }
@@ -59,11 +57,11 @@ public class LoginTests extends BaseTest {
         String invalidPassword = "54321";
         loginPage.performLogin(EMAIL, invalidPassword);
 
-        //Verifikovati da greska sadrzi poruku "Wrong password":
+        // Verify that the error contains the message "Wrong password":
         driverWait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]/ul/li"), "Wrong password"));
         Assert.assertEquals(loginPage.getWrongPasswordMessage(), "Wrong password");
 
-        //Verifikovati da se u url-u stranice javlja /login ruta:
+        // Verify that the /login route appears in the url of the page:
         String actualLink = driver.getCurrentUrl();
         Assert.assertTrue(actualLink.contains("/login"));
     }
@@ -75,7 +73,7 @@ public class LoginTests extends BaseTest {
 
         Thread.sleep(1000);
 
-        //Verifikovati da se u url-u stranice javlja /home ruta:
+        // Verify that the /home route appears in the url of the page:
         String actualLink = driver.getCurrentUrl();
         driverWait.until(ExpectedConditions.urlContains("/home"));
         Assert.assertTrue(actualLink.contains("/home"));
@@ -84,18 +82,17 @@ public class LoginTests extends BaseTest {
     @Test //Test #6:
     public void logout() {
 
-        //Verifikovati da je dugme logout vidljivo na stranici:
+        // Verify that the logout button is visible on the page:
         loginPage.performLogin(EMAIL, PASSWORD);
         Assert.assertTrue(homePage.isButtonLogoutDisplayed());
 
-        //Verifikovati da se u url-u stranice javlja /login ruta:
+        // Verify that the /login route appears in the url of the page:
         homePage.logout();
         String actualLink = driver.getCurrentUrl();
         driverWait.until(ExpectedConditions.urlContains("/login"));
         Assert.assertTrue(actualLink.contains("/login"));
 
-        //Verifikovati da se nakon pokušaja otvaranja /home rute, u url-u stranice javlja /login ruta
-        //(otvoriti sa driver.get home page i proveriti da li vas redirektuje na login):
+        // Verify that after trying to open the /home route, the /login route appears in the url of the page:
         driver.get("https://vue-demo.daniel-avellaneda.com" + "/home");
         String actualLink1 = driver.getCurrentUrl();
         Assert.assertTrue(actualLink1.contains("/login"));

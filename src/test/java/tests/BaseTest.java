@@ -38,7 +38,7 @@ public abstract class BaseTest {
         landingPage = new LandingPage(driver, driverWait);
         loginPage = new LoginPage(driver, driverWait);
         homePage = new HomePage(driver, driverWait);
-        faker = new Faker(); //???????????????????????????
+        faker = new Faker();
     }
 
     @BeforeMethod

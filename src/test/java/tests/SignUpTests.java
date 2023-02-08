@@ -1,8 +1,6 @@
 package tests;
 
-import org.testng.annotations.AfterMethod;
 import pages.SignUpPage;
-import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -29,7 +27,7 @@ public class SignUpTests extends BaseTest {
     @Test //Test #1:
     public void visitSignUPage() {
 
-        //Verifikovati da se u url-u stranice javlja /signup ruta:
+        // Verify that the /signup route appears in the url of the page:
         String actualLink = driver.getCurrentUrl();
         Assert.assertTrue(actualLink.contains("/signup"));
     }
@@ -37,15 +35,15 @@ public class SignUpTests extends BaseTest {
     @Test //Test #2:
     public void checkInputTypes() {
 
-        // Verifikovati da polje za unos emaila za atribut "type" ima vrednost email:
+        // Verify that the email input field for the "type" attribute has the value email:
         String inputEmail = "email";
         Assert.assertEquals(signUpPage.getFieldEmailSignUp(), inputEmail);
 
-        // Verifikovati da polje za unos lozinke za atribut "type" ima vrednost password:
+        // Verify that the password entry field for the "type" attribute has the value password:
         String inputPassword = "password";
         Assert.assertEquals(signUpPage.getFieldPasswordSignUp(), inputPassword);
 
-        // Verifikovati da polje za unos lozinke za potvrdu za atribut "type" ima vrednost password:
+        // Verify that the confirmation password input field for the "type" attribute has the value password:
         String inputConfirmPassword = "password";
         Assert.assertEquals(signUpPage.getFieldConfirmPasswordSignUp(), inputConfirmPassword);
     }
@@ -59,11 +57,11 @@ public class SignUpTests extends BaseTest {
         String confirmPassword = "123654";
         signUpPage.performSignUp(name, email, password, confirmPassword);
 
-        //Verifikovati da greska sadrzi poruku "E-mail already exists":
+        // Verify that the error contains the message "E-mail already exists":
         driverWait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[3]/div/div/div/div/div[1]/ul/li"), "E-mail already exists"));
         Assert.assertEquals(signUpPage.getEmailMessage(), "E-mail already exists");
 
-        //Verifikovati da se u url-u stranice javlja /signup ruta:
+        // Verify that the /signup route appears in the url of the page:
         String actualLink = driver.getCurrentUrl();
         Assert.assertTrue(actualLink.contains("/signup"));
     }
@@ -77,10 +75,9 @@ public class SignUpTests extends BaseTest {
         String confirmPassword = password;
         signUpPage.performSignUp(name, email, password, confirmPassword);
 
-        // Verifikovati da dijalog za obavestenje sadrzi tekst "IMPORTANT: Verify your account" :
+        // Verify that the notification dialog contains the text "IMPORTANT: Verify your account":
         driverWait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id=\"app\"]/div[4]/div/div/div[1]"), "IMPORTANT: Verify your account"));
         Assert.assertEquals(signUpPage.getVerifyYourAccountMessage(), "IMPORTANT: Verify your account");
         signUpPage.closeMessage();
-
     }
 }
